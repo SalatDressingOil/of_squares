@@ -15,12 +15,12 @@ function Rect(x,y,z){
     }
 
 };
-var x = 3; // количество (x*y)
-var y = 3; 
+var x = 10; // количество (x*y)
+var y = 10; 
 
-var z = 45; // размер квадратов
+var z = 20; // размер квадратов
 
-var len = 50; // расстояние между квадратами
+var len = 25; // расстояние между квадратами
 
 var rect_arr = new Array(x);
 
@@ -41,14 +41,18 @@ cvs.addEventListener('click', function (e) {
     console.log('событие!');
     var x1 = e.pageX - e.target.offsetLeft;
     var y1 = e.pageY - e.target.offsetTop;
+    
     for (var i = 0; i < x; i++){
         if (x1>=rect_arr[i][0].x && x1<=rect_arr[i][0].x+z){
-
+            //console.log(fun_x(x1,rect_arr[i][0]))
+            //console.log(rect_arr[i][0])
             for (var j = 0; j < y; j++){
+
                 //console.log(String(x1)+" "+String(y1));
                 //console.log(rect_arr[i][j]);
                 //console.log(String(rect_arr[i][j].x+z)+" "+String(rect_arr[i][j].y+z))
                 //console.log('-------------')
+
                 if(y1>=rect_arr[i][j].y && y1<=rect_arr[i][j].y+z){
                     ctx.fillStyle = 'red';
                     ctx.fillRect(rect_arr[i][j].x ,rect_arr[i][j].y,z,z);
@@ -61,3 +65,37 @@ cvs.addEventListener('click', function (e) {
 });
 
 
+
+
+
+
+
+
+
+function fun_x(x,a){
+    console.log(a)
+    if (a.length > 1){
+        var leng = Math.floor(a.length/2)
+        if (x < a[leng].x){
+
+            fun(x,a.slice(0,leng))
+        }
+        else{
+            fun(x,a.slice(leng,a.length))
+        }
+    }
+}
+
+function fun_y(x,a){
+    console.log(a)
+    if (a.length > 1){
+        var leng = Math.floor(a.length/2)
+        if (x < a[leng].y){
+
+            fun(x,a.slice(0,leng))
+        }
+        else{
+            fun(x,a.slice(leng,a.length))
+        }
+    }
+}
