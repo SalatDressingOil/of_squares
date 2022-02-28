@@ -42,16 +42,20 @@ cvs.addEventListener('click', function (e) {
     var x1 = e.pageX - e.target.offsetLeft;
     var y1 = e.pageY - e.target.offsetTop;
     
+    //console.log(String(x1)+" "+String(y1));
+    //console.log(fun_x(x1,rect_arr[0]))
+
     for (var i = 0; i < x; i++){
         if (x1>=rect_arr[i][0].x && x1<=rect_arr[i][0].x+z){
-            //console.log(fun_x(x1,rect_arr[i][0]))
             //console.log(rect_arr[i][0])
+            //dsfsd
             for (var j = 0; j < y; j++){
 
-                //console.log(String(x1)+" "+String(y1));
-                //console.log(rect_arr[i][j]);
-                //console.log(String(rect_arr[i][j].x+z)+" "+String(rect_arr[i][j].y+z))
-                //console.log('-------------')
+                console.log(String(x1)+" "+String(y1));
+                console.log(rect_arr[i][j]);
+                console.log(fun_y(y1,rect_arr[i]))
+                console.log(String(rect_arr[i][j].x+z)+" "+String(rect_arr[i][j].y+z))
+                console.log('-------------')
 
                 if(y1>=rect_arr[i][j].y && y1<=rect_arr[i][j].y+z){
                     ctx.fillStyle = 'red';
@@ -73,29 +77,37 @@ cvs.addEventListener('click', function (e) {
 
 
 function fun_x(x,a){
-    console.log(a)
+    //console.log(a)
     if (a.length > 1){
         var leng = Math.floor(a.length/2)
         if (x < a[leng].x){
 
-            fun(x,a.slice(0,leng))
+            return fun_x(x,a.slice(0,leng))
         }
         else{
-            fun(x,a.slice(leng,a.length))
+            //console.log(String(leng)+" "+String(a.length))
+            return fun_x(x,a.slice(leng,a.length))
         }
+    }
+    else {
+        return a[0]
     }
 }
 
 function fun_y(x,a){
-    console.log(a)
+    //console.log(a)
     if (a.length > 1){
         var leng = Math.floor(a.length/2)
         if (x < a[leng].y){
 
-            fun(x,a.slice(0,leng))
+            return fun_y(x,a.slice(0,leng))
         }
         else{
-            fun(x,a.slice(leng,a.length))
+
+            return fun_y(x,a.slice(leng,a.length))
         }
+    }
+    else {
+        return a[0]
     }
 }
