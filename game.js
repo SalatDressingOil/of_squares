@@ -15,12 +15,12 @@ function Rect(x,y,z){
     }
 
 };
-var x = 500; // количество (x*y)
-var y = 500; 
+var x = 5000; // количество (x*y)
+var y = 5000; 
 
-var z = 20; // размер квадратов
+var z = 1; // размер квадратов
 
-var len = 22.5; // расстояние между квадратами
+var len = 1; // расстояние между квадратами
 
 var rect_arr = new Array(x);
 
@@ -36,6 +36,9 @@ for (var i = 0; i < x; i++){
 
 Rect(x,y,z);
 
+var dat1 = 0;
+var dat2 = 0;
+
 //mousemove
 cvs.addEventListener('mousemove', function (e) {
     console.log('событие!');
@@ -49,7 +52,7 @@ cvs.addEventListener('mousemove', function (e) {
         if (x1>=rect_arr[i][0].x && x1<=rect_arr[i][0].x+z){
             //console.log(rect_arr[i][0])
             //dsfsd
-            //var dat = (new Date()).getTime();
+            var dat = (new Date()).getTime();
             //console.log(dat);
             for (var j = 0; j < y; j++){
 
@@ -59,17 +62,20 @@ cvs.addEventListener('mousemove', function (e) {
                 //console.log(String(rect_arr[i][j].x+z)+" "+String(rect_arr[i][j].y+z))
                 //console.log('-------------')
 
-                //if(y1>=rect_arr[i][j].y && y1<=rect_arr[i][j].y+z){
+                if(y1>=rect_arr[i][j].y && y1<=rect_arr[i][j].y+z){
+                    dat1 += new Date().getTime()-dat;
+                    console.log(dat1);
 
-                    //console.log(new Date().getTime()-dat);
-                    //dat = new Date().getTime();
-                b = fun_y(y1,rect_arr[i])
-                   // console.log(new Date().getTime()-dat);
-                    //console.log();
-                ctx.fillStyle = 'red';
-                ctx.fillRect(b.x ,b.y,z,z);
+                    dat = new Date().getTime();
+                    b = fun_y(y1,rect_arr[i])
+                    dat2 += new Date().getTime()-dat
+                    console.log(dat2);
+
+                    console.log();
+                    ctx.fillStyle = 'red';
+                    ctx.fillRect(b.x ,b.y,z,z);
                     return
-                //}
+                }
             }
 
         }
