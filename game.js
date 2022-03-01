@@ -15,12 +15,12 @@ function Rect(x,y,z){
     }
 
 };
-var x = 10; // количество (x*y)
-var y = 10; 
+var x = 500; // количество (x*y)
+var y = 500; 
 
 var z = 20; // размер квадратов
 
-var len = 25; // расстояние между квадратами
+var len = 22.5; // расстояние между квадратами
 
 var rect_arr = new Array(x);
 
@@ -37,7 +37,7 @@ for (var i = 0; i < x; i++){
 Rect(x,y,z);
 
 //mousemove
-cvs.addEventListener('click', function (e) {
+cvs.addEventListener('mousemove', function (e) {
     console.log('событие!');
     var x1 = e.pageX - e.target.offsetLeft;
     var y1 = e.pageY - e.target.offsetTop;
@@ -49,19 +49,27 @@ cvs.addEventListener('click', function (e) {
         if (x1>=rect_arr[i][0].x && x1<=rect_arr[i][0].x+z){
             //console.log(rect_arr[i][0])
             //dsfsd
+            //var dat = (new Date()).getTime();
+            //console.log(dat);
             for (var j = 0; j < y; j++){
 
-                console.log(String(x1)+" "+String(y1));
-                console.log(rect_arr[i][j]);
-                console.log(fun_y(y1,rect_arr[i]))
-                console.log(String(rect_arr[i][j].x+z)+" "+String(rect_arr[i][j].y+z))
-                console.log('-------------')
+                //console.log(String(x1)+" "+String(y1));
+                //console.log(rect_arr[i][j]);
+                //console.log(fun_y(y1,rect_arr[i]))
+                //console.log(String(rect_arr[i][j].x+z)+" "+String(rect_arr[i][j].y+z))
+                //console.log('-------------')
 
-                if(y1>=rect_arr[i][j].y && y1<=rect_arr[i][j].y+z){
-                    ctx.fillStyle = 'red';
-                    ctx.fillRect(rect_arr[i][j].x ,rect_arr[i][j].y,z,z);
+                //if(y1>=rect_arr[i][j].y && y1<=rect_arr[i][j].y+z){
+
+                    //console.log(new Date().getTime()-dat);
+                    //dat = new Date().getTime();
+                b = fun_y(y1,rect_arr[i])
+                   // console.log(new Date().getTime()-dat);
+                    //console.log();
+                ctx.fillStyle = 'red';
+                ctx.fillRect(b.x ,b.y,z,z);
                     return
-                }
+                //}
             }
 
         }
