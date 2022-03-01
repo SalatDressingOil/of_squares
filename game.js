@@ -24,9 +24,7 @@ cvs.id = "CursorLayer";
 cvs.width = x*len;
 cvs.height = y*len;
 
-//cvs.style.zIndex = 8;
-//cvs.style.position = "absolute";
-//cvs.style.border = "1px solid";
+
 
 var p = document.getElementsByTagName("p")[0];
 p.appendChild(cvs);
@@ -46,7 +44,7 @@ for (var i = 0; i < x; i++){
 Rect(x,y,z);
 
 //mousemove
-cvs.addEventListener('mousemove', function (e) {
+cvs.addEventListener('click', function (e) {
     console.log('событие!');
     var x1 = e.pageX - e.target.offsetLeft;
     var y1 = e.pageY - e.target.offsetTop;
