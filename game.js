@@ -6,7 +6,7 @@ function Rect(x,y,z){
             rect_arr[i][j].y = j*len;
             //console.log(String(i*1)+"   "+String(j*50)+" "+String(z))
             //console.log('    ')
-            ctx.fillStyle = '#ffffffff';
+            ctx.fillStyle = '#ffffff';
             ctx.fillRect(rect_arr[i][j].x ,rect_arr[i][j].y,z,z);
             ctx.strokeRect(rect_arr[i][j].x ,rect_arr[i][j].y,z,z);
         }
