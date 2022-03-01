@@ -1,6 +1,3 @@
-var cvs = document.getElementById("canvas");
-var ctx = cvs.getContext("2d");
-
 function Rect(x,y,z){
 
     for (var i = 0; i < x; i++){
@@ -15,14 +12,26 @@ function Rect(x,y,z){
     }
 
 };
-var x = 5000; // количество (x*y)
-var y = 5000; 
 
-var z = 1; // размер квадратов
-
-var len = 1; // расстояние между квадратами
-
+var x = 10; // количество (x*y)
+var y = 10; 
+var z = 45; // размер квадратов
+var len = 50; // расстояние между квадратами
 var rect_arr = new Array(x);
+var cvs = document.createElement('canvas');
+
+cvs.id = "CursorLayer";
+cvs.width = x*len;
+cvs.height = y*len;
+
+//cvs.style.zIndex = 8;
+//cvs.style.position = "absolute";
+//cvs.style.border = "1px solid";
+
+var p = document.getElementsByTagName("p")[0];
+p.appendChild(cvs);
+var ctx = cvs.getContext("2d");
+
 
 for (var i = 0; i < x; i++){
     rect_arr[i] = new Array(y);
@@ -35,9 +44,6 @@ for (var i = 0; i < x; i++){
 }
 
 Rect(x,y,z);
-
-var dat1 = 0;
-var dat2 = 0;
 
 //mousemove
 cvs.addEventListener('mousemove', function (e) {
@@ -63,17 +69,8 @@ cvs.addEventListener('mousemove', function (e) {
                 //console.log('-------------')
 
                 if(y1>=rect_arr[i][j].y && y1<=rect_arr[i][j].y+z){
-                    dat1 += new Date().getTime()-dat;
-                    console.log(dat1);
-
-                    dat = new Date().getTime();
-                    b = fun_y(y1,rect_arr[i])
-                    dat2 += new Date().getTime()-dat
-                    console.log(dat2);
-
-                    console.log();
                     ctx.fillStyle = 'red';
-                    ctx.fillRect(b.x ,b.y,z,z);
+                    ctx.fillRect(rect_arr[i][j].x ,rect_arr[i][j].y,z,z);
                     return
                 }
             }
@@ -81,47 +78,3 @@ cvs.addEventListener('mousemove', function (e) {
         }
     }
 });
-
-
-
-
-
-
-
-
-
-function fun_x(x,a){
-    //console.log(a)
-    if (a.length > 1){
-        var leng = Math.floor(a.length/2)
-        if (x < a[leng].x){
-
-            return fun_x(x,a.slice(0,leng))
-        }
-        else{
-            //console.log(String(leng)+" "+String(a.length))
-            return fun_x(x,a.slice(leng,a.length))
-        }
-    }
-    else {
-        return a[0]
-    }
-}
-
-function fun_y(x,a){
-    //console.log(a)
-    if (a.length > 1){
-        var leng = Math.floor(a.length/2)
-        if (x < a[leng].y){
-
-            return fun_y(x,a.slice(0,leng))
-        }
-        else{
-
-            return fun_y(x,a.slice(leng,a.length))
-        }
-    }
-    else {
-        return a[0]
-    }
-}
