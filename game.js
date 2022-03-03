@@ -15,10 +15,23 @@ function Rect(x,y,z){
 
 };
 
-var tag = document.createElement('meta');
-tag.name="viewport";
-tag.content = "user-scalable=0";
-document.head.appendChild(tag);
+function document_wheel(e) {
+    e.preventDefault();
+}
+if (document.addEventListener) {
+    if ('onwheel' in document) {
+        // IE9+, FF17+, Ch31+
+        document.addEventListener("wheel", document_wheel);
+    } else if ('onmousewheel' in document) {
+        // устаревший вариант события
+        document.addEventListener("mousewheel", document_wheel);
+    } else {
+        // Firefox < 17
+        document.addEventListener("MozMousePixelScroll", document_wheel);
+    }
+} else { // IE8-
+    document.attachEvent("onmousewheel", document_wheel);
+}
 
 
 var x = 20; // количество (x*y)
