@@ -2,10 +2,10 @@
 /* Когда пользователь нажимает на кнопку,
 переключение между скрытием и отображением раскрывающегося содержимого */
 
-var x = 10; // количество (x*y)
-var y = 10; 
-var z = 45; // размер квадратов
-var len = 50; // расстояние между квадратами
+var x = 100; // количество (x*y)
+var y = 100; 
+var z = 10; // размер квадратов
+var len = 10; // расстояние между квадратами
 var rect_arr = new Array(x);
 
 var cvs = document.createElement('canvas');
@@ -18,7 +18,7 @@ cvs.height = y*len-(len-z)+2;
 var saves = [];
 
 function save(){
-    if (saves.length>=100){
+    if (saves.length>=1000){
         saves.splice(0,1);
     }
     a = new Array(x);
@@ -37,6 +37,7 @@ function load(zn=saves.length-1){
             ctx.fillRect(rect_arr[i][j].x+1,rect_arr[i][j].y+1,z-2,z-2);
         }
     }
+    saves.pop();
 }
 var p = document.getElementsByTagName("div")[0];
 p.appendChild(cvs);
@@ -59,7 +60,8 @@ function Rect_stroke(x,y,z,color){
             rect_arr[i][j].x = 1+(i*len);
             rect_arr[i][j].y = 1+(j*len);
             ctx.strokeStyle = color;
-            ctx.strokeRect(rect_arr[i][j].x ,rect_arr[i][j].y,z,z);
+            ctx.strokeRect(1+(i*len) ,1+(j*len),z,z);
+
         }
         console.log('----------')
     }
@@ -67,7 +69,7 @@ function Rect_stroke(x,y,z,color){
 
 };
 function Rect(x,y,z,color){
-    var resul1 = rgba2hex("rgba("+String(ctx.getImageData(10, 10, 1, 1).data)+")").substring(0,6)
+    var resul1 = rgba2hex("rgba("+String(ctx.getImageData(z-1, z-1, 1, 1).data)+")").substring(0,6)
     for (var i = 0; i < x; i++){
         for (var j = 0; j < y; j++){
             //console.log(String(i*1)+"   "+String(j*50)+" "+String(z))
@@ -78,7 +80,7 @@ function Rect(x,y,z,color){
         }
         console.log('----------')
     }
-    return [resul1,rgba2hex("rgba("+String(ctx.getImageData(10, 10, 1, 1).data)+")").substring(0,6)];
+    return [resul1,rgba2hex("rgba("+String(ctx.getImageData(z-1, z-1, 1, 1).data)+")").substring(0,6)];
 
 };
 Rect_stroke(x,y,z,'black')
@@ -93,7 +95,7 @@ cvs.addEventListener('click', function (e) {
     //console.log(fun_x(x1,rect_arr[0]))
 
     for (var i = 0; i < x; i++){
-        if (x1>=rect_arr[i][0].x && x1<=rect_arr[i][0].x+z){
+        if (x1>=rect_arr[i][0].x && x1<=rect_arr[i][0].x+z+7){
             //console.log(rect_arr[i][0])
             //dsfsd
             var dat = (new Date()).getTime();
@@ -105,8 +107,12 @@ cvs.addEventListener('click', function (e) {
                 //console.log(fun_y(y1,rect_arr[i]))
                 //console.log(String(rect_arr[i][j].x+z)+" "+String(rect_arr[i][j].y+z))
                 //console.log('-------------')
+                //ctx.strokeStyle = 'green';
+                //console.log(x1,y1)
+                
+                //ctx.strokeRect(rect_arr[i][j].x,rect_arr[i][j].y, z, z);
 
-                if(y1>=rect_arr[i][j].y && y1<=rect_arr[i][j].y+z){
+                if(y1>=rect_arr[i][j].y && y1<=rect_arr[i][j].y+z+7){
 
 
                     /*
@@ -119,6 +125,7 @@ cvs.addEventListener('click', function (e) {
                         rect_arr[i][j].color = '#ffffff'
                     }
                     */
+                    save()
 
                     ctx.fillStyle = document.getElementById("jscolor").value;
 

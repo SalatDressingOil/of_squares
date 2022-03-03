@@ -1,10 +1,10 @@
 .container {
+  position: relative;
+  text-align: center;
   }
-   
-  .center {
-  position:absolute;
-  }
-   
+.box{
+
+}
 
   .butto {
     background-color: #abb4b8;
@@ -15,13 +15,13 @@
   }
   .lft_butt{
     position: relative;
+    top:30px;
   }
   .lft_butt :hover{
     background-color: #c8d1d8;
   }
 
   .righ{
-    position:relative;
-    text-align: center;
-    top: 0px;
+    position: relative;
+    top:15px;
   }
