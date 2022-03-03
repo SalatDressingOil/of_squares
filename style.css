@@ -9,6 +9,3 @@ p {
     padding-left: 0px;
     padding-right: 0px;
   }
-body.disable-dbl-tap-zoom {
-  touch-action: manipulation;
-}

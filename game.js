@@ -15,7 +15,11 @@ function Rect(x,y,z){
 
 };
 
-//<meta name="viewport" content="width=device-width, initial-scale=1.0">
+var tag = document.createElement('meta');
+tag.name="viewport";
+tag.content = "user-scalable=0";
+document.head.appendChild(tag);
+
 
 var x = 20; // количество (x*y)
 var y = 20; 
