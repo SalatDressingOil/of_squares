@@ -1,20 +1,3 @@
-function Rect(x,y,z){
-
-    for (var i = 0; i < x; i++){
-        for (var j = 0; j < y; j++){
-            rect_arr[i][j].x = i*len;
-            rect_arr[i][j].y = j*len;
-            //console.log(String(i*1)+"   "+String(j*50)+" "+String(z))
-            //console.log('    ')
-            ctx.fillStyle = '#ffffff';
-            ctx.fillRect(rect_arr[i][j].x ,rect_arr[i][j].y,z,z);
-            ctx.strokeRect(rect_arr[i][j].x ,rect_arr[i][j].y,z,z);
-        }
-        console.log('----------')
-    }
-
-};
-
 function document_wheel(e) {
     e.preventDefault();
 }
@@ -32,10 +15,26 @@ if (document.addEventListener) {
 } else { // IE8-
     document.attachEvent("onmousewheel", document_wheel);
 }
+function Rect(x,y,z){
+
+    for (var i = 0; i < x; i++){
+        for (var j = 0; j < y; j++){
+            rect_arr[i][j].x = i*len;
+            rect_arr[i][j].y = j*len;
+            //console.log(String(i*1)+"   "+String(j*50)+" "+String(z))
+            //console.log('    ')
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(rect_arr[i][j].x ,rect_arr[i][j].y,z,z);
+            ctx.strokeRect(rect_arr[i][j].x ,rect_arr[i][j].y,z,z);
+        }
+        console.log('----------')
+    }
+
+};
 
 
-var x = 20; // количество (x*y)
-var y = 20; 
+var x = 15; // количество (x*y)
+var y = 15; 
 var z = 45; // размер квадратов
 var len = 50; // расстояние между квадратами
 var rect_arr = new Array(x);
@@ -66,7 +65,7 @@ for (var i = 0; i < x; i++){
 Rect(x,y,z);
 
 //mousemove
-cvs.addEventListener('click', function (e) {
+cvs.addEventListener('mousemove', function (e) {
     console.log('событие!');
     var x1 = e.pageX - e.target.offsetLeft;
     var y1 = e.pageY - e.target.offsetTop;
