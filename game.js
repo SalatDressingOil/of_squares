@@ -1,3 +1,4 @@
+/*
 function document_wheel(e) {
     e.preventDefault();
 }
@@ -15,6 +16,7 @@ if (document.addEventListener) {
 } else { // IE8-
     document.attachEvent("onmousewheel", document_wheel);
 }
+*/
 function Rect(x,y,z){
 
     for (var i = 0; i < x; i++){
