@@ -15,8 +15,9 @@ cvs.width = x*len-(len-z)+2;
 cvs.height = y*len-(len-z)+2;
 
 
-var saves = [];
 
+/*
+var saves = [];
 function save(){
     if (saves.length>=1000){
         saves.splice(0,1);
@@ -39,6 +40,9 @@ function load(zn=saves.length-1){
     }
     saves.pop();
 }
+*/
+
+
 var p = document.getElementsByTagName("div")[0];
 p.appendChild(cvs);
 var ctx = cvs.getContext("2d");
@@ -125,11 +129,15 @@ cvs.addEventListener('click', function (e) {
                         rect_arr[i][j].color = '#ffffff'
                     }
                     */
-                    save()
+                   
+                    start_color = rgba2hex("rgba("+String(ctx.getImageData(rect_arr[i][j].x+1, rect_arr[i][j].y+1, 1, 1).data)+")");
 
                     ctx.fillStyle = document.getElementById("jscolor").value;
 
                     ctx.fillRect(rect_arr[i][j].x+1,rect_arr[i][j].y+1,z-2,z-2);
+
+                    save(start_color,rgba2hex("rgba("+String(ctx.getImageData(rect_arr[i][j].x+1, rect_arr[i][j].y+1, 1, 1).data)+")"),rect_arr[i][j].x,rect_arr[i][j].y)
+
                     return 0;
                 }
             }

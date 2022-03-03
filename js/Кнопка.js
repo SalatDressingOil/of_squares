@@ -1,12 +1,16 @@
-async function fun(){
-    save();
-    if (document.getElementById("jscolor").value.substr(-2) == 'FF'){
+async function FillAll(save_bool = true,color = document.getElementById("jscolor").value){
+    if (save_bool){
+        start_color = rgba2hex("rgba("+String(ctx.getImageData(z-1, z-1, 1, 1).data)+")");        
+    }
+
+    console.log('123123123493594306859045684905869485690')
+    if (color.substr(-2) == 'FF'){
         var result = [0,1]
         while(result[0] != result[1]) {
 
             var promise = new Promise((resolve) =>{
                 setTimeout(() => {
-                    resolve(Rect(x,y,z,document.getElementById("jscolor").value.substr(0,7)+"0F"));
+                    resolve(Rect(x,y,z,color.substr(0,7)+"0F"));
                 },1);
             });
 
@@ -18,9 +22,16 @@ async function fun(){
             //Rect(x,y,z,(document.getElementById("jscolor").value.substr(0,7)+"09"));
         }
     }
-    setTimeout(Rect,0,x,y,z,document.getElementById("jscolor").value);
+    setTimeout(Rect,0,x,y,z,color);
+    if (save_bool){
+        save(start_color,rgba2hex("rgba("+String(ctx.getImageData(z-1, z-1, 1, 1).data)+")"),-1,-1)
+    }
     //Rect(x,y,z,document.getElementById("jscolor").value);
 }
+function fun(){
+    FillAll()
+}
+
 
 
 async function f() {
