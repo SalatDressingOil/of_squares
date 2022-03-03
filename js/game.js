@@ -2,8 +2,8 @@
 /* Когда пользователь нажимает на кнопку,
 переключение между скрытием и отображением раскрывающегося содержимого */
 
-var x = 25; // количество (x*y)
-var y = 25; 
+var x = 10; // количество (x*y)
+var y = 10; 
 var z = 45; // размер квадратов
 var len = 50; // расстояние между квадратами
 var rect_arr = new Array(x);
@@ -15,6 +15,29 @@ cvs.width = x*len-(len-z)+2;
 cvs.height = y*len-(len-z)+2;
 
 
+var saves = [];
+
+function save(){
+    if (saves.length>=100){
+        saves.splice(0,1);
+    }
+    a = new Array(x);
+    for (var i=0;i<x;i++){
+        a[i] = new Array(y);
+        for(var j=0;j<y;j++){
+            a[i][j] = rgba2hex("rgba("+String(ctx.getImageData(rect_arr[i][j].x+1, rect_arr[i][j].y+1, 1, 1).data)+")").substring(0,6);
+        }
+    }
+    saves.push(a);
+}
+function load(zn=saves.length-1){
+    for (var i=0;i<x;i++){
+        for(var j=0;j<y;j++){
+            ctx.fillStyle = "#"+saves[zn][i][j]
+            ctx.fillRect(rect_arr[i][j].x+1,rect_arr[i][j].y+1,z-2,z-2);
+        }
+    }
+}
 var p = document.getElementsByTagName("div")[0];
 p.appendChild(cvs);
 var ctx = cvs.getContext("2d");
@@ -29,22 +52,36 @@ for (var i = 0; i < x; i++){
         }
     }
 }
-function Rect(x,y,z,color){
+function Rect_stroke(x,y,z,color){
 
     for (var i = 0; i < x; i++){
         for (var j = 0; j < y; j++){
             rect_arr[i][j].x = 1+(i*len);
             rect_arr[i][j].y = 1+(j*len);
-            //console.log(String(i*1)+"   "+String(j*50)+" "+String(z))
-            //console.log('    ')
-            ctx.fillStyle = color;
-            ctx.fillRect(rect_arr[i][j].x ,rect_arr[i][j].y,z,z);
+            ctx.strokeStyle = color;
             ctx.strokeRect(rect_arr[i][j].x ,rect_arr[i][j].y,z,z);
         }
         console.log('----------')
     }
 
+
 };
+function Rect(x,y,z,color){
+    var resul1 = rgba2hex("rgba("+String(ctx.getImageData(10, 10, 1, 1).data)+")").substring(0,6)
+    for (var i = 0; i < x; i++){
+        for (var j = 0; j < y; j++){
+            //console.log(String(i*1)+"   "+String(j*50)+" "+String(z))
+            //console.log('    ')
+            ctx.fillStyle = color;
+            ctx.fillRect(rect_arr[i][j].x+1,rect_arr[i][j].y+1,z-2,z-2);
+
+        }
+        console.log('----------')
+    }
+    return [resul1,rgba2hex("rgba("+String(ctx.getImageData(10, 10, 1, 1).data)+")").substring(0,6)];
+
+};
+Rect_stroke(x,y,z,'black')
 Rect(x,y,z,'white');
 //mousemove
 cvs.addEventListener('click', function (e) {
@@ -86,7 +123,7 @@ cvs.addEventListener('click', function (e) {
                     ctx.fillStyle = document.getElementById("jscolor").value;
 
                     ctx.fillRect(rect_arr[i][j].x+1,rect_arr[i][j].y+1,z-2,z-2);
-                    return
+                    return 0;
                 }
             }
 

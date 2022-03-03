@@ -6,17 +6,17 @@
   }
    
 
-
   .butto {
     background-color: #abb4b8;
-    padding: 8px;
+    padding: 16px;
     font-size: 16px;
     border: none;
     cursor: pointer;
   }
-
+  .lft_butt{
+    position: relative;
+  }
   .lft_butt :hover{
-
     background-color: #c8d1d8;
   }
 
