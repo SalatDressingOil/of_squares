@@ -15,16 +15,17 @@ function Rect(x,y,z){
 
 };
 
-var x = 10; // количество (x*y)
-var y = 10; 
+var x = 20; // количество (x*y)
+var y = 20; 
 var z = 45; // размер квадратов
 var len = 50; // расстояние между квадратами
 var rect_arr = new Array(x);
 var cvs = document.createElement('canvas');
 
 cvs.id = "CursorLayer";
-cvs.width = x*len;
-cvs.height = y*len;
+cvs.width = x*len-(len-z);
+cvs.height = y*len-(len-z);
+
 
 
 
