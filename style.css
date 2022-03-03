@@ -1,11 +1,27 @@
-p {
-    text-align:center;
+.container {
+  }
+   
+  .center {
+  position:absolute;
+  }
+   
 
 
+  .butto {
+    background-color: #abb4b8;
+    padding: 8px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+  }
 
-    font-family: Verdana;
-    font-size: 0px;
-    font-weight: normal;
-    padding-left: 0px;
-    padding-right: 0px;
+  .lft_butt :hover{
+
+    background-color: #c8d1d8;
+  }
+
+  .righ{
+    position:relative;
+    text-align: center;
+    top: 0px;
   }
