@@ -15,6 +15,8 @@ function Rect(x,y,z){
 
 };
 
+//<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 var x = 20; // количество (x*y)
 var y = 20; 
 var z = 45; // размер квадратов
