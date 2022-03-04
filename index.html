@@ -14,26 +14,33 @@
     <script src="js/Кнопка.js"></script>
     <script src="js/color.js"></script>
     <script src="color_pic\jscolor.js"></script>
-    <script src="js\save_load.js"></script>
+
 
     <link rel="stylesheet" href="style.css">
 
     <div class="container"> 
         <script src="js/game.js"></script>
-
         <div class="box">
             <div class="righ">
                 <input value="#FF0000FF" data-jscolor="{}" id="jscolor">
             </div>
 
             <div class="lft_butt">
-                <button onclick="fun()" class="butto" id="buttonName">Закрасить</button>
+                <button onclick="fun_FillAll()" class="butto_FillAll" id="buttonName">Закрасить</button>
+            </div>
+
+            <div class="inp_load">
+                <input value="0" id="inp_load1">
+            </div>
+
+            <div class="inp_load_butt">
+                <button onclick="fun_load()" class="butto_load" id="buttom_fun_load">Отменить действий: 0</button>
             </div>
 
         </div>
     </div>
 
-
+    <script src="js\save_load.js"></script>
     <script src="style.js"></script>
 </body>
 </html>

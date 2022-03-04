@@ -1,4 +1,7 @@
 async function FillAll(save_bool = true,color = document.getElementById("jscolor").value){
+    cvs.removeEventListener("mousemove",event_mouse);
+    but1.onclick = '';
+    but2.onclick = '';
     if (save_bool){
         start_color = rgba2hex("rgba("+String(ctx.getImageData(z-1, z-1, 1, 1).data)+")");        
     }
@@ -16,19 +19,18 @@ async function FillAll(save_bool = true,color = document.getElementById("jscolor
 
             result = await promise;
 
-            console.log(result);
-
-            //console.log(result);
-            //Rect(x,y,z,(document.getElementById("jscolor").value.substr(0,7)+"09"));
         }
     }
     setTimeout(Rect,0,x,y,z,color);
     if (save_bool){
         save(start_color,rgba2hex("rgba("+String(ctx.getImageData(z-1, z-1, 1, 1).data)+")"),-1,-1)
     }
-    //Rect(x,y,z,document.getElementById("jscolor").value);
+
+    cvs.addEventListener("mousemove",event_mouse)
+    but1.onclick=fun_FillAll;
+    but2.onclick=fun_load;
 }
-function fun(){
+function fun_FillAll(){
     FillAll()
 }
 

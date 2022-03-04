@@ -2,8 +2,8 @@
 /* Когда пользователь нажимает на кнопку,
 переключение между скрытием и отображением раскрывающегося содержимого */
 
-var x = 100; // количество (x*y)
-var y = 100; 
+var x = 60; // количество (x*y)
+var y = 60; 
 var z = 10; // размер квадратов
 var len = 10; // расстояние между квадратами
 var rect_arr = new Array(x);
@@ -82,15 +82,20 @@ function Rect(x,y,z,color){
             ctx.fillRect(rect_arr[i][j].x+1,rect_arr[i][j].y+1,z-2,z-2);
 
         }
-        console.log('----------')
+        //console.log('----------')
     }
     return [resul1,rgba2hex("rgba("+String(ctx.getImageData(z-1, z-1, 1, 1).data)+")").substring(0,6)];
 
 };
 Rect_stroke(x,y,z,'black')
 Rect(x,y,z,'white');
+
+
 //mousemove
-cvs.addEventListener('click', function (e) {
+cvs.addEventListener('mousemove', event_mouse);
+
+
+function event_mouse (e) {
     console.log('событие!');
     var x1 = e.pageX - e.target.offsetLeft;
     var y1 = e.pageY - e.target.offsetTop;
@@ -102,7 +107,7 @@ cvs.addEventListener('click', function (e) {
         if (x1>=rect_arr[i][0].x && x1<=rect_arr[i][0].x+z+7){
             //console.log(rect_arr[i][0])
             //dsfsd
-            var dat = (new Date()).getTime();
+            //var dat = (new Date()).getTime();
             //console.log(dat);
             for (var j = 0; j < y; j++){
 
@@ -144,4 +149,4 @@ cvs.addEventListener('click', function (e) {
 
         }
     }
-});
+}

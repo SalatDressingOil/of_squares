@@ -6,7 +6,7 @@
 
 }
 
-  .butto {
+  .butto_FillAll{
     background-color: #abb4b8;
     padding: 16px;
     font-size: 16px;
@@ -14,8 +14,9 @@
     cursor: pointer;
   }
   .lft_butt{
+
     position: relative;
-    top:30px;
+
   }
   .lft_butt :hover{
     background-color: #c8d1d8;
@@ -23,5 +24,27 @@
 
   .righ{
     position: relative;
-    top:15px;
+
   }
+  .inp_load {
+    position: relative;
+    margin-top: -73px;
+  }
+
+  .inp_load_butt{
+
+
+  }
+  .butto_load{
+    position: relative;
+    
+    background-color: #abb4b8;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+  }
+
+.inp_load_butt :hover{
+  background-color: #c8d1d8;
+}
