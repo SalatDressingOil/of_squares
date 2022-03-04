@@ -8,7 +8,8 @@
 
   .butto_FillAll{
     background-color: #abb4b8;
-    padding: 16px;
+
+    padding: 14px;
     font-size: 16px;
     border: none;
     cursor: pointer;
@@ -28,7 +29,7 @@
   }
   .inp_load {
     position: relative;
-    margin-top: -73px;
+
   }
 
   .inp_load_butt{
