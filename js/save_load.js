@@ -55,15 +55,19 @@ async function load(n=1){
             await promise;
             saves.pop();
             k=saves.length-1
-            while (k != 0 || saves[k].score_no_fillAll!=0) {
+            while (true) {
+                if (saves[k].score_no_fillAll==0 || k==0){
+                    break
+                }
                 ctx.fillStyle = '#'+saves[k].color_end;
-                //ctx.fillRect(saves[saves.length-1].x+1,saves[saves.length-1].y+1,z-2,z-2)
+                
                 var promise = new Promise((resolve) =>{
                     setTimeout(() => {
                         resolve(ctx.fillRect(saves[k].x+1,saves[k].y+1,z-2,z-2));
                     },0)
                 });
                 await promise;
+
                 k-=1;
             }
         }
