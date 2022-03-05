@@ -2,7 +2,7 @@ var saves = []
 but1 = document.getElementById('buttonName');
 but2 = document.getElementById('buttom_fun_load');
 
-inp_load1.maxLength = 4
+inp_load1.maxLength = 5
 function fun_load(){
     try{
         g = parseInt(document.getElementById("inp_load1").value)
@@ -47,7 +47,7 @@ async function load(n=1){
     but2.onclick = '';
     for (var i = 0; i<n; i++){
         if (saves[saves.length-1].x < 0 && saves[saves.length-1].y < 0){
-            console.log(1)
+            //console.log(1)
             //document.getElementById("jscolor").value = "#"+saves[saves.length-1].color_start;
             var promise = new Promise((resolve) =>{
                     resolve(FillAll(false,"#"+saves[saves.length-1].color_start));
@@ -56,11 +56,10 @@ async function load(n=1){
             saves.pop();
             k=saves.length-1
             while (true) {
-                if (saves[k].score_no_fillAll==0 || k==0){
-                    break
-                }
+                if (k==0 || saves[k].score_no_fillAll==0) break
+                if (saves[k].score_no_fillAll==0) break
                 ctx.fillStyle = '#'+saves[k].color_end;
-                
+
                 var promise = new Promise((resolve) =>{
                     setTimeout(() => {
                         resolve(ctx.fillRect(saves[k].x+1,saves[k].y+1,z-2,z-2));
@@ -72,7 +71,7 @@ async function load(n=1){
             }
         }
         else{
-            console.log(2)
+            //console.log(2)
             ctx.fillStyle = '#'+saves[saves.length-1].color_start;
             var promise = new Promise((resolve) =>{
                 setTimeout(() => {
